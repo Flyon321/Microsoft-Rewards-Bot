@@ -28,8 +28,7 @@ count_y = 0
 x = int(input("Enter the number of searches to do on Windows: "))
 y = int(input("Enter the number of searches to do on Mobile: "))
 
-#ENTER YOUR FIREFOX PATH WITH BING SEARCH ENGINE
-sb.Popen("PATH")
+sb.Popen("C://Program Files//Mozilla Firefox//firefox.exe")
 
 file_windows = open("site.txt")
 phrase = file_windows.readline
