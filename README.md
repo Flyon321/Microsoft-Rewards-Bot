@@ -6,6 +6,6 @@ An automatic process to earn point with Microsoft Rewards using Firefox shortcut
 
 2 - Then you have to install the requirements to let the code run
 
-    `pip install -r requirements.txt`
+    pip install -r requirements.txt
 
 3 - Run your python code and have fun with rewards ;)
