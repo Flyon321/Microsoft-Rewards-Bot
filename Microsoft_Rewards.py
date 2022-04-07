@@ -35,15 +35,15 @@ def change_device():
 count_x = 0
 count_y = 0
 count_z = 0
-x = int(input("Inserire il numero di ricerche da fare su Windows: "))
-y = int(input("Inserire il numero di ricerche da fare su Mobile: "))
-z = int(input("Inserire il numero di ricerche da fare su Edge: "))
+x = int(input("Enter the number of searches to do on Windows: "))
+y = int(input("Enter the number of searches to do on Mobile: "))
+z = int(input("Enter the number of searches to do on Edge: "))
 
 if x != 0 or y != 0:
     #Earn on Firefox Windows
     sb.Popen("C://Program Files//Mozilla Firefox//firefox.exe")
     
-    file_windows = open("C://Users//Lenovo//Desktop//PROGRAMMING//cose_da_scrivere.txt")
+    file_windows = open("site.txt")
     phrase = file_windows.readline
 
     time.sleep(6)
@@ -61,7 +61,7 @@ if x != 0 or y != 0:
     file_windows.close
 
     #Punti su Mobile
-    file_mobile = open("C://Users//Lenovo//Desktop//PROGRAMMING//cose_da_scrivere.txt")
+    file_mobile = open("site.txt")
     phrase = file_mobile.readline
 
     for phrase in file_mobile:
@@ -84,7 +84,7 @@ if z != 0:
     sb.Popen("C://Program Files (x86)//Microsoft//Edge//Application//msedge.exe")
     time.sleep(8)
 
-    file_edge = open("C://Users//Lenovo//Desktop//PROGRAMMING//cose_da_scrivere.txt")
+    file_edge = open("site.txt")
     phrase = file_edge.readline
 
     time.sleep(6)
