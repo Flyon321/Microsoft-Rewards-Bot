@@ -1,28 +1,22 @@
 import pyautogui as pg
 import time
 import subprocess as sb
+import random
 
-def new_tab():
+def new_window():
+    time.sleep(3)
     with pg.hold('ctrl'):
-        pg.press('t')
-    time.sleep(0.5)
+        pg.press('n')
+    time.sleep(2)
 
 def close_window():
     with pg.hold('ctrl'):
         pg.press('w')
 
-def close_tab():
-    with pg.hold('ctrl'):
-        with pg.hold('shift'):
-            pg.press('tab')
-    time.sleep(0.5)
-    with pg.hold('ctrl'):
-        pg.press('w')
-
 def write():
-    time.sleep(2)
+    time.sleep(3)
     pg.typewrite(phrase, 0.03)
-    time.sleep(0.5)
+    time.sleep(2)
     pg.press('enter')
     time.sleep(3)
 
@@ -30,73 +24,67 @@ def change_device():
     with pg.hold('ctrl'):
         with pg.hold('shift'):
             pg.press('m')
-    time.sleep(2)
+    time.sleep(3)
+
+def Generator():
+    buono = ""
+    caratteri = ["A","B","C","D","E","F","G","H","J","K","I","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "1","2","3","4","5","6","7","8","9","0"]
+    for i in range(14):
+        casuale = random.choice(caratteri)
+        buono = buono + casuale
+
+    return buono
 
 count_x = 0
 count_y = 0
 count_z = 0
-x = int(input("Enter the number of searches to do on Windows: "))
-y = int(input("Enter the number of searches to do on Mobile: "))
-z = int(input("Enter the number of searches to do on Edge: "))
+x = int(input("Inserire il numero di ricerche da fare su Windows: "))
+y = int(input("Inserire il numero di ricerche da fare su Mobile: "))
+z = int(input("Inserire il numero di ricerche da fare su Edge: "))
 
 if x != 0 or y != 0:
-    #Earn on Firefox Windows
+    #Insert your Firefox path here
     sb.Popen("C://Program Files//Mozilla Firefox//firefox.exe")
-    
-    file_windows = open("site.txt")
-    phrase = file_windows.readline
 
     time.sleep(6)
 
-    for phrase in file_windows:
-        if count_x < x:
-            write()
-            new_tab()
-            close_tab()
+    pg.write("ciao", 0.03)
+    pg.press('enter')
+    time.sleep(4)
+    with pg.hold('ctrl'):
+        pg.press('n')
 
-            count_x = count_x + 1
-        else:
-            break
+    #Point on Browser
 
-    file_windows.close
+    while count_x < x:
+        phrase = Generator()
+        write()
+        close_window()
+        new_window()
 
-    #Punti su Mobile
-    file_mobile = open("site.txt")
-    phrase = file_mobile.readline
+        count_x = count_x + 1
 
-    for phrase in file_mobile:
-        if count_y < y:
-            change_device()
+    #Point on Mobile
 
-            write()
-            new_tab()
-            close_tab()
+    while count_y < y:
+        change_device()
 
-            count_y = count_y + 1
-        else:
-            break
+        phrase = Generator()
+        write()
+        close_window()
+        new_window()
 
-    close_window()
-    file_mobile.close
+        count_y = count_y + 1
 
-#Punti su Edge
 if z != 0:
+    #Insert your Edge path here
     sb.Popen("C://Program Files (x86)//Microsoft//Edge//Application//msedge.exe")
     time.sleep(8)
 
-    file_edge = open("site.txt")
-    phrase = file_edge.readline
+    while count_z < z:
+        phrase = Generator()
+        write()
+        close_window()
+        new_window()
 
-    time.sleep(6)
-    for phrase in file_edge:
-        if count_z < z:
-            write()
-            new_tab()
-            close_tab()
-
-            count_z = count_z + 1
-        else:
-            break
-
-    close_window()
-    file_edge.close
+        count_z = count_z + 1
