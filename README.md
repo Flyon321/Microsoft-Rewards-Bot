@@ -7,5 +7,15 @@ An automatic process to earn point with Microsoft Rewards using Firefox and Edge
 2 - Then you have to install the requirements to let the code run
 
     pip install -r requirements.txt
+    
+3 - If your Browser are in wrog path just modify the code:
 
-3 - Run your python code and have fun with rewards ;)
+   Put your Firefox path in line 47
+    
+   ![Firefox_path](https://user-images.githubusercontent.com/76116045/217003786-ce862cdf-1dfb-470b-b795-3ed0fac3e556.png)
+   
+   Put your Edge path in line 
+    
+   ![Edge_path](https://user-images.githubusercontent.com/76116045/217004365-806ac537-4129-4bb3-986b-9e38be3679ba.png)
+
+4 - Run your python code and have fun with rewards ;)
