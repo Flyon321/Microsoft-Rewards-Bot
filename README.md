@@ -16,6 +16,6 @@ An automatic process to earn point with Microsoft Rewards using Firefox and Edge
    
    Put your Edge path in line 
     
-   ![Edge_path](https://user-images.githubusercontent.com/76116045/217004365-806ac537-4129-4bb3-986b-9e38be3679ba.png)
+   ![Edge_path](https://user-images.githubusercontent.com/76116045/217005746-a3443df3-07ec-45fd-bec7-a2caed306836.png)
 
 4 - Run your python code and have fun with rewards ;)
