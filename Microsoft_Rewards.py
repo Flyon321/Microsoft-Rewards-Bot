@@ -3,15 +3,15 @@ import time
 import subprocess as sb
 import random
 
+path_firefox = "C://Program Files//Mozilla Firefox//firefox.exe"
+path_edge = "C://Program Files (x86)//Microsoft//Edge//Application//msedge.exe"
+
 # Funzioni di stampa colorata
 global badprint
 badprint = False # Impostare su True per disabilitare la stampa colorata
 def rprint(skk): print(" E "+skk) if badprint else print("\033[91m E\033[00m {}" .format(skk))
 def gprint(skk): print(" * "+skk) if badprint else print("\033[92m *\033[00m {}" .format(skk))
 def xprint(skk): print(":: "+skk) if badprint else print(":: \033[96m{}\033[00m" .format(skk))
-
-path_firefox = "C://Program Files//Mozilla Firefox//firefox.exe"
-path_edge = "C://Program Files (x86)//Microsoft//Edge//Application//msedge.exe"
 
 def new_window(program="Firefox"):
     if "Firefox" in program:
