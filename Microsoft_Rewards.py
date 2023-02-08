@@ -3,28 +3,46 @@ import time
 import subprocess as sb
 import random
 
-def new_window():
-    time.sleep(3)
-    with pg.hold('ctrl'):
-        pg.press('n')
-    time.sleep(2)
+path_firefox = "C://Program Files//Mozilla Firefox//firefox.exe"
+path_edge = "C://Program Files (x86)//Microsoft//Edge//Application//msedge.exe"
+
+# Funzioni di stampa colorata
+global badprint
+badprint = False # Impostare su True per disabilitare la stampa colorata
+def rprint(skk): print(" E "+skk) if badprint else print("\033[91m E\033[00m {}" .format(skk))
+def gprint(skk): print(" * "+skk) if badprint else print("\033[92m *\033[00m {}" .format(skk))
+def xprint(skk): print(":: "+skk) if badprint else print(":: \033[96m{}\033[00m" .format(skk))
+
+def new_window(program="Firefox"):
+    if "Firefox" in program:
+        sb.Popen(path_firefox)
+    elif ("Edge" in program):
+        sb.Popen(path_edge)
+    else: # Mobile
+        sb.Popen(path_firefox)
+        change_device()
+    gprint("Nuova finestra")
+    time.sleep(1)
 
 def close_window():
     with pg.hold('ctrl'):
         pg.press('w')
-
+    gprint("Chiusa finestra")
+    
 def write():
-    time.sleep(3)
+    time.sleep(2)
     pg.typewrite(phrase, 0.03)
     time.sleep(2)
     pg.press('enter')
-    time.sleep(3)
+    print(">> "+phrase)
+    time.sleep(2)
 
 def change_device():
     with pg.hold('ctrl'):
         with pg.hold('shift'):
             pg.press('m')
-    time.sleep(3)
+    time.sleep(1)
+    gprint("Impostato dispositivo mobile")
 
 def Generator():
     buono = ""
@@ -32,9 +50,9 @@ def Generator():
     for i in range(14):
         casuale = random.choice(caratteri)
         buono = buono + casuale
-
     return buono
 
+# ---- MAIN ---
 count_x = 0
 count_y = 0
 count_z = 0
@@ -42,49 +60,26 @@ x = int(input("Inserire il numero di ricerche da fare su Windows: "))
 y = int(input("Inserire il numero di ricerche da fare su Mobile: "))
 z = int(input("Inserire il numero di ricerche da fare su Edge: "))
 
-if x != 0 or y != 0:
-    #Insert your Firefox path here
-    sb.Popen("C://Program Files//Mozilla Firefox//firefox.exe")
+# Point on Firefox
+while count_x < x:
+    new_window("Firefox")
+    phrase = Generator()
+    write()
+    close_window()
+    count_x = count_x + 1
 
-    time.sleep(6)
+# Point on Mobile
+while count_y < y:
+    new_window("Mobile")
+    change_device()
+    phrase = Generator()
+    write()
+    close_window()
+    count_y = count_y + 1
 
-    pg.write("ciao", 0.03)
-    pg.press('enter')
-    time.sleep(4)
-    with pg.hold('ctrl'):
-        pg.press('n')
-
-    #Point on Browser
-
-    while count_x < x:
-        phrase = Generator()
-        write()
-        close_window()
-        new_window()
-
-        count_x = count_x + 1
-
-    #Point on Mobile
-
-    while count_y < y:
-        change_device()
-
-        phrase = Generator()
-        write()
-        close_window()
-        new_window()
-
-        count_y = count_y + 1
-
-if z != 0:
-    #Insert your Edge path here
-    sb.Popen("C://Program Files (x86)//Microsoft//Edge//Application//msedge.exe")
-    time.sleep(8)
-
-    while count_z < z:
-        phrase = Generator()
-        write()
-        close_window()
-        new_window()
-
-        count_z = count_z + 1
+while count_z < z:
+    new_window("Edge")
+    phrase = Generator()
+    write()
+    close_window()
+    count_z = count_z + 1
