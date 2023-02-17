@@ -21,9 +21,11 @@ def write():
     time.sleep(3)
 
 def change_device():
-    with pg.hold('ctrl'):
-        with pg.hold('shift'):
-            pg.press('m')
+    pg.hotkey('ctrl', 'shift', 'm')
+    time.sleep(1)
+    pg.press('f3')
+    time.sleep(0.5)
+    pg.press('esc')
     time.sleep(3)
 
 def Generator():
